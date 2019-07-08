@@ -11,24 +11,25 @@
 
 //Object with all the options for the chart
 let options = {
-  valuesPosition = 'centre',
-  barWidth = 0,
-  barHeight = 0,
-  barColor = 'red',
-  labelColor = 'blue',
-  barSpacing = 3,
-  barChartAxes = 4,
-  barTitle = 'New Bar Chart',
-  titleFontSize = 12,
-  titleFontColor = 'black'
+  valuesPosition : 'centre',
+  barWidth : 0,
+  barHeight : 0,
+  barColor : 'red',
+  labelColor : 'blue',
+  barSpacing : 3,
+  barChartAxes : 4,
+  barTitle : 'New Bar Chart',
+  titleFontSize : 12,
+  titleFontColor : 'black'
 };
 
 $(document).ready(function (){
 
-  const addBarTag = (data) => {
+  const addBarTag = (data,index) => {
     data.forEach((d) => {
-      let element = document.createElement(`bar${d}`);
+      let element = document.createElement(`bar${index}`);
       $('body').append(element);
+      $(element).data('value', data);  
     })
   }
 
