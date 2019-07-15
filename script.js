@@ -34,7 +34,7 @@ $(document).ready(function (){
       const barClass = `bar${index}`;
       $(domObjects.barChart).append(`<div class="${barClass}"></div>`);
       // $(`.${barClass}`).data('value', d);
-      // $(`.${barClass}`).append(`<data>${d}</data>`);
+      $(`.${barClass}`).append(`<data>${d}</data>`);
 
     })
   }
@@ -46,9 +46,9 @@ $(document).ready(function (){
   }
 
   const setBarHeight = (data) => {
-    const chartHeight = data.sort((a,b)=> {
-      return b - a;
-    })[0];
+    // const chartHeight = data.sort((a,b)=> {
+    //   return b - a;
+    // })[0];
     data.forEach((d,index)=> {
       const barClass = `.bar${index}`;
       const barStart = 1000 - d + 1;
@@ -58,9 +58,9 @@ $(document).ready(function (){
     });
   }
 
-  addBarTag([900,600,100,400,50]);
-  setChartGrid([900,600,100,400,50]);
-  setBarHeight([900,600,100,400,50]);
+  addBarTag([100,600,400,900,50]);
+  setChartGrid([100,600,400,900,50]);
+  setBarHeight([100,600,400,900,50]);
 
 
 })
