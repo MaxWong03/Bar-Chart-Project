@@ -67,6 +67,7 @@ $(document).ready(function (){
     $(domObjects.data).css('align-self', valuesPosition);
     $(domObjects.bar).css('background-color', barColor2);
     $(domObjects.barColor1).css('background-color', barColor1);
+    $(domObjects.barChart).css('grid-column-gap', barSpacing);
   }
 
   const drawBarChart = (data, options = {
@@ -87,10 +88,11 @@ $(document).ready(function (){
   };
 
 
-  drawBarChart([100,600,400,1000,50,325],{
+  drawBarChart([100,600,400,1000,50,325,99, 73, 288, 999, 193,134, 876, 589, 397],{
     valuesPosition: 'start',
-    barColor1: 'brown',
-    barColor2: 'yellow'
+    // barColor1: 'brown',
+    // barColor2: 'yellow',
+    barSpacing: '7px'
   });
   
 })
