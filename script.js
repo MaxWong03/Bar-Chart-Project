@@ -34,22 +34,33 @@ $(document).ready(function (){
       const barClass = `bar${index}`;
       $(domObjects.barChart).append(`<div class="${barClass}"></div>`);
       // $(`.${barClass}`).data('value', d);
-      $(`.${barClass}`).append(`<data>${d}</data>`);
+      // $(`.${barClass}`).append(`<data>${d}</data>`);
 
     })
   }
 
   const setChartGrid = (data) =>{
     const numOfData = data.length;
-    const chartHeight = numOfData - 1;
     $(domObjects.barChart).css('grid-template-columns', `repeat(${numOfData}, 1fr)`);
-    $(domObjects.barChart).css('grid-template-rows', `repeat(${chartHeight}, 1fr)`);
+    $(domObjects.barChart).css('grid-template-rows', `repeat(${1000}, 1fr)`);
   }
 
+  const setBarHeight = (data) => {
+    const chartHeight = data.sort((a,b)=> {
+      return b - a;
+    })[0];
+    data.forEach((d,index)=> {
+      const barClass = `.bar${index}`;
+      const barStart = 1000 - d + 1;
+      $(barClass).css('grid-row-start', barStart);
 
+    
+    });
+  }
 
-  addBarTag([3000,600,100,400,50]);
-  setChartGrid([3000,600,100,400,50]);
+  addBarTag([900,600,100,400,50]);
+  setChartGrid([900,600,100,400,50]);
+  setBarHeight([900,600,100,400,50]);
 
 
 })
