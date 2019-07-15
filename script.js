@@ -14,7 +14,8 @@
 const domObjects = {
   barChart: '.chart',
   bar: '[class*="bar"]',
-  data: 'data'
+  data: 'data',
+  barColor1: '[class*=bar]:nth-child(odd)'
 };
 
 
@@ -63,8 +64,9 @@ $(document).ready(function (){
       options.titleFontSize,
       options.titleFontColor
     ];
-    console.log(valuesPosition);
     $(domObjects.data).css('align-self', valuesPosition);
+    $(domObjects.bar).css('background-color', barColor2);
+    $(domObjects.barColor1).css('background-color', barColor1);
   }
 
   const drawBarChart = (data, options = {
@@ -85,7 +87,11 @@ $(document).ready(function (){
   };
 
 
-  drawBarChart([100,600,400,1000,50,325]);
+  drawBarChart([100,600,400,1000,50,325],{
+    valuesPosition: 'start',
+    barColor1: 'brown',
+    barColor2: 'yellow'
+  });
   
 })
 

@@ -37,3 +37,4 @@ data{
 [class*=bar]:nth-child(odd){
   background-color: rgba(207, 4, 4, 0.589)
 }
+
