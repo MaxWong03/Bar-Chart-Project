@@ -58,9 +58,9 @@ $(document).ready(function (){
     });
   }
 
-  addBarTag([100,600,400,900,50]);
-  setChartGrid([100,600,400,900,50]);
-  setBarHeight([100,600,400,900,50]);
+  addBarTag([100,600,400,900,50,325]);
+  setChartGrid([100,600,400,900,50,325]);
+  setBarHeight([100,600,400,900,50,325]);
 
 
 })
