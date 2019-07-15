@@ -31,6 +31,7 @@ data{
   width: 100%;
   text-align:center;
   font-size: xx-large;
+  align-self: center;
 }
 
 [class*=bar]:nth-child(odd){

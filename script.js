@@ -9,23 +9,14 @@
 
 // The element parameter should be a DOM element or jQuery element that the chart will get rendered into.
 
-//Object with all the options for the chart
-let options = {
-  valuesPosition : 'centre',
-  barWidth : 0,
-  barHeight : 0,
-  barColor : 'red',
-  labelColor : 'blue',
-  barSpacing : 3,
-  barChartAxes : 4,
-  barTitle : 'New Bar Chart',
-  titleFontSize : 12,
-  titleFontColor : 'black'
-};
+
 
 const domObjects = {
-  barChart: '.chart'
-}
+  barChart: '.chart',
+  bar: '[class*="bar"]',
+  data: 'data'
+};
+
 
 $(document).ready(function (){
 
@@ -58,11 +49,44 @@ $(document).ready(function (){
     });
   }
 
-  addBarTag([100,600,400,900,50,325]);
-  setChartGrid([100,600,400,900,50,325]);
-  setBarHeight([100,600,400,900,50,325]);
+  const setOptions = (options) => {
+    let valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor;
+    [valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor] = 
+    [
+      options.valuesPosition,
+      options.barColor1,
+      options.barColor2,
+      options.labelColor,
+      options.barSpacing,
+      options.barChartAxes,
+      options.barTitle,
+      options.titleFontSize,
+      options.titleFontColor
+    ];
+    console.log(valuesPosition);
+    $(domObjects.data).css('align-self', valuesPosition);
+  }
+
+  const drawBarChart = (data, options = {
+    valuesPosition: 'center',
+    barColor1: 'rgba(207, 4, 4, 0.589)',
+    barColor2: 'rgba(11, 11, 189, 0.603)',
+    labelColor: '',
+    barSpacing: '5px',
+    barChartAxes: '',
+    barTitle: 'New Bar Chart',
+    titleFontSize: '',
+    titleFontColor: 'black'
+  }, element) => {
+    addBarTag(data);
+    setChartGrid(data);
+    setBarHeight(data);
+    setOptions(options);
+  };
 
 
+  drawBarChart([100,600,400,1000,50,325]);
+  
 })
 
 
