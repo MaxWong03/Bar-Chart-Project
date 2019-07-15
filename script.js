@@ -25,15 +25,19 @@ let options = {
 
 $(document).ready(function (){
 
-  const addBarTag = (data,index) => {
-    data.forEach((d) => {
-      let element = document.createElement(`bar${index}`);
-      $('body').append(element);
-      $(element).data('value', data);  
+  const addBarTag = (data) => {
+    data.forEach((d,index) => {
+      const barClass = `bar${index}`;
+      $('.barChart').append(`<div class="${barClass}"></div>`);
+      $(`.${barClass}`).data('value', d);
     })
   }
 
+  addBarTag([3]);
+
+
 })
+
 
 
 
