@@ -23,17 +23,33 @@ let options = {
   titleFontColor : 'black'
 };
 
+const domObjects = {
+  barChart: '.chart'
+}
+
 $(document).ready(function (){
 
   const addBarTag = (data) => {
     data.forEach((d,index) => {
       const barClass = `bar${index}`;
-      $('.barChart').append(`<div class="${barClass}"></div>`);
-      $(`.${barClass}`).data('value', d);
+      $(domObjects.barChart).append(`<div class="${barClass}"></div>`);
+      // $(`.${barClass}`).data('value', d);
+      $(`.${barClass}`).append(`<data>${d}</data>`);
+
     })
   }
 
-  addBarTag([3]);
+  const setChartGrid = (data) =>{
+    const numOfData = data.length;
+    const chartHeight = numOfData - 1;
+    $(domObjects.barChart).css('grid-template-columns', `repeat(${numOfData}, 1fr)`);
+    $(domObjects.barChart).css('grid-template-rows', `repeat(${chartHeight}, 1fr)`);
+  }
+
+
+
+  addBarTag([3000,600,100,400,50]);
+  setChartGrid([3000,600,100,400,50]);
 
 
 })
