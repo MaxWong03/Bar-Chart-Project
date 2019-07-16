@@ -92,7 +92,7 @@ $(document).ready(function (){
     valuesPosition: 'start',
     // barColor1: 'brown',
     // barColor2: 'yellow',
-    barSpacing: '7px'
+    barSpacing: '20px'
   });
   
 })
