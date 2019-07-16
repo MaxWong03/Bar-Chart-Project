@@ -15,7 +15,8 @@ const domObjects = {
   barChart: '.chart',
   bar: '[class*="bar"]',
   data: 'data',
-  barColor1: '[class*=bar]:nth-child(odd)'
+  barColor1: '[class*=bar]:nth-child(odd)',
+  axis: '.axis'
 };
 
 
@@ -51,8 +52,8 @@ $(document).ready(function (){
   }
 
   const setOptions = (options) => {
-    let valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor;
-    [valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor] = 
+    let valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor, axisColor, axisSize;
+    [valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor, axisColor, axisSize] = 
     [
       options.valuesPosition,
       options.barColor1,
@@ -62,12 +63,18 @@ $(document).ready(function (){
       options.barChartAxes,
       options.barTitle,
       options.titleFontSize,
-      options.titleFontColor
+      options.titleFontColor,
+      options.axisColor,
+      options.axisSize
     ];
     $(domObjects.data).css('align-self', valuesPosition);
     $(domObjects.bar).css('background-color', barColor2);
     $(domObjects.barColor1).css('background-color', barColor1);
     $(domObjects.barChart).css('grid-column-gap', barSpacing);
+    $(domObjects.axis).css({
+      'border-bottom': `${axisSize} solid`,
+      'border-left': `${axisSize} solid`
+      });
   }
 
   const drawBarChart = (data, options = {
@@ -79,7 +86,8 @@ $(document).ready(function (){
     barChartAxes: '',
     barTitle: 'New Bar Chart',
     titleFontSize: '',
-    titleFontColor: 'black'
+    titleFontColor: 'black',
+    axisSize: '5px'
   }, element) => {
     addBarTag(data);
     setChartGrid(data);
@@ -93,6 +101,7 @@ $(document).ready(function (){
     // barColor1: 'brown',
     // barColor2: 'yellow',
     barSpacing: '20px'
+    // axisSize: '10px'
   });
   
 })
