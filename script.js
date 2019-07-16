@@ -73,8 +73,11 @@ $(document).ready(function (){
     $(domObjects.barChart).css('grid-column-gap', barSpacing);
     $(domObjects.axis).css({
       'border-bottom': `${axisSize} solid`,
-      'border-left': `${axisSize} solid`
+      'border-left': `${axisSize} solid `,
+      'border-bottom-color': axisColor,
+      'border-left-color': axisColor
       });
+    
   }
 
   const drawBarChart = (data, options = {
@@ -87,7 +90,8 @@ $(document).ready(function (){
     barTitle: 'New Bar Chart',
     titleFontSize: '',
     titleFontColor: 'black',
-    axisSize: '5px'
+    axisSize: '5px',
+    axisColor: 'rgba(128, 128, 128, 0.726)'
   }, element) => {
     addBarTag(data);
     setChartGrid(data);
@@ -100,8 +104,9 @@ $(document).ready(function (){
     valuesPosition: 'start',
     // barColor1: 'brown',
     // barColor2: 'yellow',
-    barSpacing: '20px'
+    barSpacing: '20px',
     // axisSize: '10px'
+    // axisColor: 'red'
   });
   
 })
