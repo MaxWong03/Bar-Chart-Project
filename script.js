@@ -30,7 +30,9 @@ $(document).ready(function (){
       $(domObjects.barChart).append(`<div class="${barClass}"></div>`);
       // $(`.${barClass}`).data('value', d);
       $(`.${barClass}`).append(`<data>${d}</data>`);
-
+      $(`.${barClass}`).css('grid-column', `${index+1}/${index+2}`);
+      $(domObjects.axis).append(`<label${index}>Label-${index+1}</label${index}>`);
+      
     })
   }
 
@@ -43,7 +45,7 @@ $(document).ready(function (){
     });
     $(domObjects.barChart).css('grid-template-rows', `repeat(${1000}, 1fr)`);
     $(domObjects.axis).css('grid-template-columns', `5px repeat(${numOfData}, 1fr)`);
-    $(domObjects.xAxis).css('grid-column', `1/${numOfData+1}`);
+    $(domObjects.xAxis).css('grid-column', `1/${numOfData+2}`);
 
     return numOfData;
   }
