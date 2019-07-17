@@ -16,7 +16,9 @@ const domObjects = {
   bar: '[class*="bar"]',
   data: 'data',
   barColor1: '[class*=bar]:nth-child(odd)',
-  axis: '.axis'
+  axis: '.axis',
+  xAxis: '.xaxis',
+  yAxis: '.yaxis'
 };
 
 
@@ -32,10 +34,18 @@ $(document).ready(function (){
     })
   }
 
+
   const setChartGrid = (data) =>{
     const numOfData = data.length;
     $(domObjects.barChart).css('grid-template-columns', `repeat(${numOfData}, 1fr)`);
+    $(domObjects.barChart).css({
+      'grid-column': `1/${numOfData+1}`
+    });
     $(domObjects.barChart).css('grid-template-rows', `repeat(${1000}, 1fr)`);
+    $(domObjects.axis).css('grid-template-columns', `5px repeat(${numOfData}, 1fr)`);
+    $(domObjects.xAxis).css('grid-column', `1/${numOfData+1}`);
+
+    return numOfData;
   }
 
   const setBarHeight = (data) => {
@@ -46,21 +56,18 @@ $(document).ready(function (){
       const barClass = `.bar${index}`;
       const barStart = 1000 - d + 1;
       $(barClass).css('grid-row-start', barStart);
-
-    
     });
   }
 
-  const setOptions = (options) => {
-    let valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor, axisColor, axisSize;
-    [valuesPosition, barColor1, barColor2, labelColor, barSpacing, barChartAxes, barTitle, titleFontSize, titleFontColor, axisColor, axisSize] = 
+  const setOptions = (options, numOfData) => {
+    let valuesPosition, barColor1, barColor2, labelColor, barSpacing, barTitle, titleFontSize, titleFontColor, axisColor, axisSize;
+    [valuesPosition, barColor1, barColor2, labelColor, barSpacing, barTitle, titleFontSize, titleFontColor, axisColor, axisSize] = 
     [
       options.valuesPosition,
       options.barColor1,
       options.barColor2,
       options.labelColor,
       options.barSpacing,
-      options.barChartAxes,
       options.barTitle,
       options.titleFontSize,
       options.titleFontColor,
@@ -72,11 +79,10 @@ $(document).ready(function (){
     $(domObjects.barColor1).css('background-color', barColor1);
     $(domObjects.barChart).css('grid-column-gap', barSpacing);
     $(domObjects.axis).css({
-      'border-bottom': `${axisSize} solid`,
-      'border-left': `${axisSize} solid `,
-      'border-bottom-color': axisColor,
-      'border-left-color': axisColor
+      'grid-template-rows': `repeat(12, 1fr) ${axisSize} 1fr`,
+      'grid-template-columns': `${axisSize} repeat(${numOfData}, 1fr)`
       });
+    $(`${domObjects.xAxis}, ${domObjects.yAxis}`).css('background-color', axisColor);
     
   }
 
@@ -94,9 +100,9 @@ $(document).ready(function (){
     axisColor: 'rgba(128, 128, 128, 0.726)'
   }, element) => {
     addBarTag(data);
-    setChartGrid(data);
+    const numOfData = setChartGrid(data);
     setBarHeight(data);
-    setOptions(options);
+    setOptions(options,numOfData);
   };
 
 
@@ -105,7 +111,7 @@ $(document).ready(function (){
     // barColor1: 'brown',
     // barColor2: 'yellow',
     barSpacing: '20px',
-    // axisSize: '10px'
+    // axisSize: '10px',
     // axisColor: 'red'
   });
   
