@@ -41,7 +41,7 @@ $(document).ready(function (){
     const numOfData = data.length;
     $(domObjects.barChart).css('grid-template-columns', `repeat(${numOfData}, 1fr)`);
     $(domObjects.barChart).css({
-      'grid-column': `1/${numOfData+1}`
+      'grid-column': `1/${numOfData+2}`
     });
     $(domObjects.barChart).css('grid-template-rows', `repeat(${1000}, 1fr)`);
     $(domObjects.axis).css('grid-template-columns', `5px repeat(${numOfData}, 1fr)`);
@@ -109,10 +109,10 @@ $(document).ready(function (){
 
 
   drawBarChart([100,600,400,1000,50,325,99, 73, 288, 999, 193,134, 876, 589, 397],{
-    valuesPosition: 'start',
+    // valuesPosition: 'start',
     // barColor1: 'brown',
     // barColor2: 'yellow',
-    barSpacing: '20px',
+    // barSpacing: '5px',
     // axisSize: '10px',
     // axisColor: 'red'
   });
