@@ -31,8 +31,8 @@ $(document).ready(function (){
       // $(`.${barClass}`).data('value', d);
       $(`.${barClass}`).append(`<data>${d}</data>`);
       $(`.${barClass}`).css('grid-column', `${index+1}/${index+2}`);
-      $(domObjects.axis).append(`<label${index}>Label-${index+1}</label${index}>`);
-      
+      $(domObjects.axis).append(`<label${index} class="label">Label-${index+1}</label${index}>`);
+      $(`label${index}`).css('grid-column', `${index+2}/${index+2}`);
     })
   }
 
