@@ -24,7 +24,7 @@ html, body{
 .yaxis{
   grid-column: 1/2;
   background-color:rgba(128, 128, 128, 0.726);
-  grid-row: 1 / 13;
+  grid-row: 2 / 13;
   padding-right: 5px;
 }
 
@@ -43,7 +43,6 @@ html, body{
   border-radius: 5px;
   display: grid;
   grid-row-end: 1000;
-
 }
 
 data{

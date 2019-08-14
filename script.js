@@ -24,7 +24,7 @@ const domObjects = {
 
 $(document).ready(function (){
 
-  const addBarTag = (data) => {
+const addBarTag = (data) => {
     data.forEach((d,index) => {
       const barClass = `bar${index}`;
       $(domObjects.barChart).append(`<div class="${barClass}"></div>`);
@@ -108,11 +108,11 @@ $(document).ready(function (){
   };
 
 
-  drawBarChart([100,600,400,1000,50,325,99, 73, 288, 999, 193,134, 876, 589, 397],{
+  drawBarChart([100,600,400],{
     // valuesPosition: 'start',
     // barColor1: 'brown',
     // barColor2: 'yellow',
-    // barSpacing: '5px',
+     barSpacing: '50px'
     // axisSize: '10px',
     // axisColor: 'red'
   });
